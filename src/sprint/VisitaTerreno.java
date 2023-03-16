@@ -56,8 +56,8 @@ public class VisitaTerreno {
 	}
 	@Override
 	public String toString() {
-		return "VisitaTerreno [irunCliente=" + irunCliente + ", dia=" + dia + ", hora=" + hora + ", lugar=" + lugar
-				+ ", comentario=" + comentario + ", identificadorT=" + identificadorT + "]";
+		return "VisitaTerreno \nRun Cliente=" + irunCliente + ", \nDía=" + dia + ", \nHora=" + hora + ", \nLugar=" + lugar
+				+ ", \nComentario=" + comentario + ", \nID Visita =" + identificadorT + "\n";
 	}
 	
 	
