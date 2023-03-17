@@ -101,4 +101,20 @@ public class Cliente extends Usuario {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "apellido='" + apellido + '\'' +
+                ", telefono=" + telefono +
+                ", afp='" + afp + '\'' +
+                ", sistemaSalud=" + sistemaSalud +
+                ", direccion='" + direccion + '\'' +
+                ", comunna='" + comunna + '\'' +
+                ", edad=" + edad +
+                ", nombre='" + nombre + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", run=" + run +
+                '}';
+    }
 }

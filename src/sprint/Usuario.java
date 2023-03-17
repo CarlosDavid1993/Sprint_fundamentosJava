@@ -48,4 +48,13 @@ public abstract class Usuario implements Asesoria {
     public void setRun(int run) {
         this.run = run;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", run=" + run +
+                '}';
+    }
 }

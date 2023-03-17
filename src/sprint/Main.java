@@ -13,5 +13,7 @@ public class Main {
         pruebaPro.analizarUsuario();
         Administrativo pruebaAdm = new Administrativo("David", LocalDate.of(1988, 4, 17), 159964842, "Recursos Humanos", "3 años de Trabajo");
         pruebaAdm.analizarUsuario();
+        System.out.println(pruebaCliente.toString());
+
     }
 }
