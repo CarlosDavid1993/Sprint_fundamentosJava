@@ -7,8 +7,12 @@ public class Usuario implements Asesoria{
     LocalDate fechaNacimiento;
     int run;
 
-    public int mostrarEdad() {
-        return 2023 - fechaNacimiento.getYear();
+    public void mostrarEdad() {
+        System.out.println("El usuario tiene " + (2023 - fechaNacimiento.getYear()) + "años");
     }
-
+    @Override
+    public void analizarUsuario() {
+        System.out.println("NOMBRE: " + nombre);
+        System.out.println("RUN: " + run);
+    }
 }
