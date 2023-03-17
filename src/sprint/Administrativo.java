@@ -18,6 +18,23 @@ public class Administrativo extends Usuario {
         this.area = area;
         this.experiencia = experiencia;
     }
+
     public Administrativo() {
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
     }
 }
