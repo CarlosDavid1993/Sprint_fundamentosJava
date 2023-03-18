@@ -7,10 +7,10 @@ public class Contenedor {
 	private ArrayList<Capacitacion> ListaCapacitaciones;
 	
 	public void agregarUsuario(Usuario usuario) {
-		usuario.add(usuario);
+		ListaUsuarios.add(usuario);
 	}
 	public void eliminarUsuario(Usuario usuario) {
-		usuario.remove(usuario);
+		ListaUsuarios.remove(usuario);
 	}
 
 }
