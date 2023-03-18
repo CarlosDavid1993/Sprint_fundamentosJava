@@ -8,7 +8,7 @@ public class Cliente extends Usuario {
     String afp;
     int sistemaSalud;
     String direccion;
-    String comunna;
+    String comuna;
     int edad;
 
     public void obtenerNombre() {
@@ -28,18 +28,18 @@ public class Cliente extends Usuario {
     public void analizarUsuario() {
         super.analizarUsuario();
         System.out.println("DIRECCION: " + direccion);
-        System.out.println("COMUNA: " + comunna);
+        System.out.println("COMUNA: " + comuna);
     }
 
     public Cliente(String nombre, LocalDate fechaNacimiento, int run, String apellido, int telefono, String afp,
-                   int sistemaSalud, String direccion, String comunna, int edad) {
+                   int sistemaSalud, String direccion, String comuna, int edad) {
         super(nombre, fechaNacimiento, run);
         this.apellido = apellido;
         this.telefono = telefono;
         this.afp = afp;
         this.sistemaSalud = sistemaSalud;
         this.direccion = direccion;
-        this.comunna = comunna;
+        this.comuna = comuna;
         this.edad = edad;
     }
 
@@ -87,11 +87,11 @@ public class Cliente extends Usuario {
     }
 
     public String getComunna() {
-        return comunna;
+        return comuna;
     }
 
     public void setComunna(String comunna) {
-        this.comunna = comunna;
+        this.comuna = comunna;
     }
 
     public int getEdad() {
@@ -110,7 +110,7 @@ public class Cliente extends Usuario {
                 ", afp='" + afp + '\'' +
                 ", sistemaSalud=" + sistemaSalud +
                 ", direccion='" + direccion + '\'' +
-                ", comunna='" + comunna + '\'' +
+                ", comunna='" + comuna + '\'' +
                 ", edad=" + edad +
                 ", nombre='" + nombre + '\'' +
                 ", fechaNacimiento=" + fechaNacimiento +
