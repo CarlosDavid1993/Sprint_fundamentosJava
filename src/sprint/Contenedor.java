@@ -1,5 +1,7 @@
 package sprint;
-
+/*
+ * @Author Mauricio Gutierrez, David Morales, Carlos Carrasco
+ */
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -9,7 +11,7 @@ import java.util.Scanner;
 public class Contenedor {
 
 	ArrayList<Capacitacion> objetosCapacitacion;
-	ArrayList<Asesoria> instanciaAsesoria = new ArrayList<Asesoria>();
+	ArrayList<Usuario> instanciaAsesoria = new ArrayList<Usuario>();
 
 	// 1
 	public void almacenarCliente() {
@@ -48,13 +50,12 @@ public class Contenedor {
 			try {
 				System.out.println("RUN: ");
 				run = scan.nextInt();
-				scan.nextLine();
 				inputValido = true;
 			} catch (Exception e) {
-				System.out.println("Input invalido");
-				scan.nextLine();
+				System.out.println("ingrese rut valido y sin punto ni guion");
+				scan.next();
 			}
-		} while (!inputValido || run <= 0 || run >= 100000000);
+		} while (!inputValido || run <= 0 || run >= 99999999);
 
 		// apellido
 		String apellido;
@@ -158,16 +159,14 @@ public class Contenedor {
 			try {
 				System.out.println("RUN: ");
 				run = scan.nextInt();
-				scan.nextLine();
 				inputValido = true;
 			} catch (Exception e) {
-				System.out.println("Input invalido");
-				scan.nextLine();
+				System.out.println("ingrese rut valido y sin punto ni guion");
+				scan.next();
 			}
-		} while (!inputValido || run <= 0 || run >= 100000000);
-		
-		//titulo
-		System.out.println("TITULO: ");
+		} while (!inputValido || run <= 0 || run >= 99999999);
+
+		// titulo
 		String titulo = scan.nextLine();
 		do {
 			System.out.println("TITULO: ");
@@ -177,14 +176,14 @@ public class Contenedor {
 			}
 		} while (titulo.length() < 10 || titulo.length() > 50);
 
-		//fecha de ingreso
+		// fecha de ingreso
 		System.out.println("FECHA INGRESO (DD/MM/AAAA): ");
 		String fechaIngreso = scan.nextLine();
 
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate fechaIngresoFormat = LocalDate.parse(fechaIngreso, format);
 
-		//creacion objeto prfesional
+		// creacion objeto prfesional
 		Profesional profesional = new Profesional(nombre, fechaNacimiento, run, titulo, fechaIngresoFormat);
 		instanciaAsesoria.add(profesional);
 	}
@@ -224,15 +223,14 @@ public class Contenedor {
 			try {
 				System.out.println("RUN: ");
 				run = scan.nextInt();
-				scan.nextLine();
 				inputValido = true;
 			} catch (Exception e) {
-				System.out.println("Input invalido");
-				scan.nextLine();
+				System.out.println("ingrese rut valido y sin punto ni guion");
+				scan.next();
 			}
-		} while (!inputValido || run <= 0 || run >= 100000000);
-		//area
-		System.out.println("AREA: ");
+		} while (!inputValido || run <= 0 || run >= 99999999);
+
+		// area
 		String area = scan.nextLine();
 		do {
 			System.out.println("AREA: ");
@@ -241,9 +239,9 @@ public class Contenedor {
 				System.out.println("Error: area debe tener entre 5 y 20 caracteres.");
 			}
 		} while (area.length() < 5 || area.length() > 20);
-		
-		//experiencia
-		String experiencia = scan.nextLine();
+
+		// experiencia
+		String experiencia;
 		do {
 			System.out.println("EXPERIENCIA: ");
 			experiencia = scan.nextLine();
@@ -258,13 +256,36 @@ public class Contenedor {
 	}
 
 	// 4
-	public void almacenarCapacitacion(Capacitacion capacitacion) {
-		objetosCapacitacion.add(capacitacion);
-	}
+	public void almacenarCapacitacion() {
+		Scanner scan = new Scanner(System.in);
 
+		System.out.println("---------INGRESE CAPACITACION---------");
+	}	
 	// 5
-	public void eliminarUsuario(Usuario usuario) {
-		instanciaAsesoria.remove(usuario);
+	public void eliminarUsuario() {
+		Scanner scan = new Scanner(System.in);
+		int run = 0;
+		
+		do {
+			System.out.println("Ingrese RUN de Usuario a eliminar: ");
+			try {
+				run = scan.nextInt();
+			} catch (Exception e) {
+				System.out.println("RUN no valido. (Ingrese RUN sin puntos y sin digito verificador.)");
+			}
+			scan.nextLine();
+		} while (run <= 0 || run >= 99999999);
+
+
+		for (int i = 0; i < instanciaAsesoria.size(); i++) {
+			if (instanciaAsesoria.get(i).getRun() == run) {
+				instanciaAsesoria.remove(instanciaAsesoria.get(i));
+				System.out.println("Usuario Eliminado.");
+			} else if (instanciaAsesoria.get((instanciaAsesoria.size()) - 1).getRun() != run) {
+				System.out.println("El RUN no existe en los registros.");
+			}
+		}
+		
 	}
 
 	// 6
@@ -315,4 +336,5 @@ public class Contenedor {
 	public void listarCapacitaciones() {
 		System.out.println(objetosCapacitacion);
 	}
+	
 }
