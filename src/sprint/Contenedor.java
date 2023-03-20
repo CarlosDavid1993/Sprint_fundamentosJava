@@ -33,7 +33,7 @@ public class Contenedor {
 		} while (nombre.length() < 5 || nombre.length() > 30 || !nombre.matches("[a-z A-Z]+"));
 
 		// fecha nacimiento
-		System.out.println("FECHA NACIMIENTO (DD-MM-AAAA): ");
+		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA): ");
 		LocalDate fechaNacimiento;
 		DateTimeFormatter Format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		do {
@@ -42,7 +42,7 @@ public class Contenedor {
 				fechaNacimiento = LocalDate.parse(fecha, Format);
 				break;
 			} catch (DateTimeParseException e) {
-				System.out.println("Error: La fecha debe estar en formato(DD-MM-AAAA).");
+				System.out.println("Error: La fecha debe estar en formato(DD/MM/AAAA).");
 			}
 		} while (true);
 
@@ -53,10 +53,11 @@ public class Contenedor {
 			try {
 				System.out.println("RUN: ");
 				run = scan.nextInt();
+				scan.nextLine();
 				inputValido = true;
 			} catch (Exception e) {
 				System.out.println("ingrese rut valido y sin punto ni guion");
-				scan.next();
+			
 			}
 		} while (!inputValido || run <= 0 || run >= 99999999);
 
@@ -118,9 +119,14 @@ public class Contenedor {
 		int edad;
 		do {
 			System.out.println("EDAD: ");
-			edad = scan.nextInt();
-			scan.nextLine();
-		} while (edad < 0 || edad >= 150);
+			try {
+				edad = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("la edad debe ser un numero entero");
+				scan.next();
+			}
+		} while (true);
 
 		Cliente cliente = new Cliente(nombre, fechaNacimiento, run, apellido, telefono, afp, sistemaSalud, direccion,
 				comuna, edad);
@@ -142,7 +148,7 @@ public class Contenedor {
 		} while (nombre.length() < 5 || nombre.length() > 30 || !nombre.matches("[a-z A-Z]+"));
 
 		// fecha nacimiento
-		System.out.println("FECHA NACIMIENTO (DD-MM-AAAA) : ");
+		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA) : ");
 		LocalDate fechaNacimiento;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		do {
@@ -180,7 +186,7 @@ public class Contenedor {
 		} while (titulo.length() < 10 || titulo.length() > 50);
 
 		// fecha de ingreso
-		System.out.println("FECHA INGRESO (DD-MM-AAAA):  ");
+		System.out.println("FECHA INGRESO (DD/MM/AAAA):  ");
 		String fechaIngreso = scan.nextLine();
 
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -206,16 +212,16 @@ public class Contenedor {
 		} while (nombre.length() < 5 || nombre.length() > 30 || !nombre.matches("[a-z A-Z]+"));
 
 		// fecha nacimiento
-		System.out.println("FECHA NACIMIENTO (DD-MM-AAAA): ");
+		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA): ");
 		LocalDate fechaNacimiento;
-		DateTimeFormatter formatear = DateTimeFormatter.ofPattern("DD-MM-AAAA");
+		DateTimeFormatter formatear = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		do {
 			try {
 				String fecha = scan.nextLine();
 				fechaNacimiento = LocalDate.parse(fecha, formatear);
 				break;
 			} catch (DateTimeParseException e) {
-				System.out.println("Error: La fecha debe estar en formato DD-MM-AAAA");
+				System.out.println("Error: La fecha debe estar en formato (DD/MM/AAAA)");
 			}
 		} while (true);
 
@@ -288,7 +294,7 @@ public class Contenedor {
 			}
 		} while (!inputValido || runCliente <= 0 || runCliente >= 99999999);
 
-		System.out.println("DIA (DD-MM-AAAA): ");
+		System.out.println("DIA (DD/MM/AAAA): ");
 		LocalDate dia;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		do {
