@@ -26,3 +26,6 @@ Para la implementación del programa se utilizaron los siguientes requerimientos
 
 <h2>Autores:</h2>
 <i>Este código fue escrito por:<br> <a href="https://github.com/Gronorf">Mauricio Gutiérrez<a> - <a href=https://github.com/AnotherDyslexicDev>David Morales<a> - <a href=https://github.com/CarlosDavid1993>Carlos Carrasco<a>
+
+
+<a href=https://github.com/CarlosDavid1993/Sprint_fundamentosJava> Link al repositorio<a>
