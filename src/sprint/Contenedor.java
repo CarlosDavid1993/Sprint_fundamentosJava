@@ -1,4 +1,5 @@
 package sprint;
+
 /*
  * @Author Mauricio Gutierrez, David Morales, Carlos Carrasco
  */
@@ -9,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Contenedor {
-
-	ArrayList<Capacitacion> objetosCapacitacion;
 	ArrayList<Usuario> instanciaAsesoria = new ArrayList<Usuario>();
+	ArrayList<Capacitacion> objetosCapacitacion = new ArrayList<Capacitacion>();
 
 	// 1
 	public void almacenarCliente() {
@@ -258,34 +258,111 @@ public class Contenedor {
 	// 4
 	public void almacenarCapacitacion() {
 		Scanner scan = new Scanner(System.in);
-
 		System.out.println("---------INGRESE CAPACITACION---------");
-	}	
+
+		int identificadorC;
+		do {
+			System.out.println("IDENTIFICADOR DE LA CAPACITACION: ");
+			try {
+				identificadorC = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("Error: el identificador de la capacitacion debe ser un numero entero.");
+				scan.next();
+			}
+		} while (true);
+
+		int runCliente = 0;
+		boolean inputValido = false;
+		do {
+			try {
+				System.out.println("RUN: ");
+				runCliente = scan.nextInt();
+				inputValido = true;
+			} catch (Exception e) {
+				System.out.println("ingrese rut valido y sin punto ni guion");
+				scan.next();
+			}
+		} while (!inputValido || runCliente <= 0 || runCliente >= 99999999);
+
+		String dia;
+		System.out.println("DIA (DD/MM/AAAA): ");
+		dia = scan.nextLine();
+		scan.nextLine();
+
+		String hora;
+		System.out.println("HORA (HH:MM): ");
+		hora = scan.nextLine();
+
+		String lugar;
+		do {
+			System.out.println("LUGAR: ");
+			lugar = scan.nextLine();
+			if (lugar.length() < 5 || lugar.length() > 30) {
+				System.out.println("Error: el lugar debe tener entre 5 y 30 caracteres.");
+			} else {
+				break;
+			}
+		} while (true);
+
+		int duracion;
+		do {
+			System.out.println("DURACION (MINUTOS): ");
+			try {
+				duracion = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("Error: la duracion en minutos debe ser un numero entero");
+				scan.next();
+			}
+		} while (true);
+
+		int cantidadAsistentes;
+		do {
+			System.out.println("CANTIDAD DE ASISTENTES: ");
+			try {
+				cantidadAsistentes = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("Error: la cantidad de asistentes debe ser un numero entero");
+				scan.next();
+			}
+		} while (true);
+
+		Capacitacion cap = new Capacitacion(identificadorC, runCliente, dia, hora, lugar, duracion, cantidadAsistentes);
+		objetosCapacitacion.add(cap);
+	}
+
 	// 5
 	public void eliminarUsuario() {
 		Scanner scan = new Scanner(System.in);
 		int run = 0;
-		
+
 		do {
 			System.out.println("Ingrese RUN de Usuario a eliminar: ");
 			try {
 				run = scan.nextInt();
+				if (run <= 0 || run >= 99999999) {
+					System.out.println("RUN no valido. (Ingrese RUN sin puntos y sin digito verificador.)");
+				}
 			} catch (Exception e) {
 				System.out.println("RUN no valido. (Ingrese RUN sin puntos y sin digito verificador.)");
+				scan.nextLine();
 			}
-			scan.nextLine();
 		} while (run <= 0 || run >= 99999999);
 
-
+		boolean usuarioEncontrado = false;
 		for (int i = 0; i < instanciaAsesoria.size(); i++) {
 			if (instanciaAsesoria.get(i).getRun() == run) {
-				instanciaAsesoria.remove(instanciaAsesoria.get(i));
+				instanciaAsesoria.remove(i);
 				System.out.println("Usuario Eliminado.");
-			} else if (instanciaAsesoria.get((instanciaAsesoria.size()) - 1).getRun() != run) {
-				System.out.println("El RUN no existe en los registros.");
+				usuarioEncontrado = true;
+				break;
 			}
 		}
-		
+		if (!usuarioEncontrado) {
+			System.out.println("El RUN ingresado no existe en los registros.");
+		}
 	}
 
 	// 6
@@ -336,5 +413,5 @@ public class Contenedor {
 	public void listarCapacitaciones() {
 		System.out.println(objetosCapacitacion);
 	}
-	
+
 }
