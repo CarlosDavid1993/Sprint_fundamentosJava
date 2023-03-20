@@ -29,7 +29,7 @@ public class Main {
             String input = "";
 
             while (!input.equals("9")) {
-            	System.out.println("  *** Asesoria prevencion de riesgos *** ");
+            	System.out.println(" \n\n\n *** Asesoria prevencion de riesgos *** ");
                 System.out.println("");
                 System.out.println("");
                 System.out.println(" Elija una opcion: ");
