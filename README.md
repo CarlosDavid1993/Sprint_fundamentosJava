@@ -25,4 +25,4 @@ Para la implementación del programa se utilizaron los siguientes requerimientos
 <i>Este código requiere que <Strong>Java</strong> esté instalado en la máquina del usuario para poder ejecutarse.</i>
 
 <h2>Autores:</h2>
-<i>Este código fue escrito por:<br> <a href="https://github.com/Gronorf">Mauricio Gutiérrez<a>, <a href=https://github.com/AnotherDyslexicDev>David Morales<a> y <a href=https://github.com/CarlosDavid1993>Carlos Carrasco<a>
+<i>Este código fue escrito por:<br> <a href="https://github.com/Gronorf">Mauricio Gutiérrez<a> - <a href=https://github.com/AnotherDyslexicDev>David Morales<a> - <a href=https://github.com/CarlosDavid1993>Carlos Carrasco<a>
