@@ -411,7 +411,11 @@ public class Contenedor {
 
 	// 6 lista todos los usuarios (cliente, administrativo, profesional)
 	public void listarUsuarios() {
-		System.out.println(instanciaAsesoria);
+		for (int i = 0; i < instanciaAsesoria.size(); i++) {
+			System.out.println(instanciaAsesoria.get(i).getNombre());
+			System.out.println(instanciaAsesoria.get(i).getFechaNacimiento());
+			System.out.println(instanciaAsesoria.get(i).getRun());
+		}
 	}
 
 	// 7 lista separando tipo de usuario (cliente, administrativo, profesional)
@@ -431,7 +435,14 @@ public class Contenedor {
 			System.out.println("Clientes: ");
 			for (int i = 0; i < instanciaAsesoria.size(); i++) {
 				if (instanciaAsesoria.get(i) instanceof Cliente) {
-					System.out.println(instanciaAsesoria.get(i));
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getNombre());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getApellido());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getTelefono());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getAfp());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getSistemaSalud());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getDireccion());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getComunna());
+					System.out.println(((Cliente) instanciaAsesoria.get(i)).getEdad());
 				}
 			}
 		}
@@ -439,7 +450,8 @@ public class Contenedor {
 			System.out.println("Profesional: ");
 			for (int i = 0; i < instanciaAsesoria.size(); i++) {
 				if (instanciaAsesoria.get(i) instanceof Profesional) {
-					System.out.println(instanciaAsesoria.get(i));
+					System.out.println(((Profesional) instanciaAsesoria.get(i)).getTitulo());
+					System.out.println(((Profesional) instanciaAsesoria.get(i)).getFechaIngreso());
 				}
 			}
 		}
@@ -447,7 +459,8 @@ public class Contenedor {
 			System.out.println("Administrativo: ");
 			for (int i = 0; i < instanciaAsesoria.size(); i++) {
 				if (instanciaAsesoria.get(i) instanceof Administrativo) {
-					System.out.println(instanciaAsesoria.get(i));
+					System.out.println(((Administrativo) instanciaAsesoria.get(i)).getArea());
+					System.out.println(((Administrativo) instanciaAsesoria.get(i)).getExperiencia());
 				}
 			}
 		}

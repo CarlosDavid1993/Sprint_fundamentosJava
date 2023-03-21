@@ -1,5 +1,5 @@
 package sprint;
-/**
+/*
  * La clase Main es la clase principal donde se ejecuta el programa.
  *
  * @author Mauricio Gutierrez
@@ -30,10 +30,10 @@ public class Main {
 
             while (!input.equals("9")) {
             	System.out.println(" \n\n\n *** Asesoria prevencion de riesgos *** ");
-                System.out.println("");
-                System.out.println("");
+                System.out.println(" ");
+                System.out.println(" ");
                 System.out.println(" Elija una opcion: ");
-                System.out.println("");
+                System.out.println(" ");
                 System.out.println("[1] ALMACENAR CLIENTE");                
                 System.out.println("[2] ALMACENAR PROFESIONAL");             
                 System.out.println("[3] ALMACENAR ADMINISTRATIVO");                
@@ -43,7 +43,7 @@ public class Main {
                 System.out.println("[7] MOSTRAR LISTA DE USUARIOS POR TIPO");              
                 System.out.println("[8] LISTA CAPACITACIONES");
                 System.out.println("[9] SALIR");
-                System.out.println("");
+                System.out.println(" ");
                 System.out.println("Ingrese una opcion [1-9]: ");
                 
                 try {
