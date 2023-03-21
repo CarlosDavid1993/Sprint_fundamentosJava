@@ -1,5 +1,7 @@
 package sprint;
-
+/*
+ * @Author Mauricio Gutierrez
+ */
 import java.time.LocalDate;
 
 public class Cliente extends Usuario {
@@ -104,17 +106,16 @@ public class Cliente extends Usuario {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "apellido='" + apellido + '\'' +
-                ", telefono=" + telefono +
-                ", afp='" + afp + '\'' +
-                ", sistemaSalud=" + sistemaSalud +
-                ", direccion='" + direccion + '\'' +
-                ", comunna='" + comuna + '\'' +
-                ", edad=" + edad +
-                ", nombre='" + nombre + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", run=" + run +
-                '}';
+        return  "\n\nCliente "+
+                "\napellido: " + apellido +
+                "\ntelefono: " + telefono +
+                "\nafp: " + afp +
+                "\nsistemaSalud: " + sistemaSalud +
+                "\ndireccion: " + direccion +
+                "\ncomunna: " + comuna +
+                "\nedad: " + edad +
+                "\nnombre: " + nombre +
+                "\nfechaNacimiento: " + fechaNacimiento +
+                "\nrun: " + run;
     }
 }

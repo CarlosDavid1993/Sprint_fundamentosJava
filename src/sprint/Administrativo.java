@@ -1,4 +1,7 @@
 package sprint;
+/*
+ * @Author Mauricio Gutierrez, David Morales, Carlos Carrasco
+ */
 
 import java.time.LocalDate;
 
@@ -40,12 +43,12 @@ public class Administrativo extends Usuario {
 
     @Override
     public String toString() {
-        return "Administrativo{" +
-                "area='" + area + '\'' +
-                ", experiencia='" + experiencia + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", run=" + run +
-                '}';
+        return "\n\nAdministrativo " +
+                "\narea: " + area +
+                "\nexperiencia: " + experiencia+
+                "\nNombre: " + nombre + 
+                "\nFecha de Nacimiento: " + fechaNacimiento +
+                "\nRun: " + run 
+                ;
     }
 }

@@ -1,4 +1,7 @@
 package sprint;
+/*
+ * @Author Mauricio Gutierrez
+ */
 
 import java.time.LocalDate;
 
@@ -40,12 +43,12 @@ public class Profesional extends Usuario {
 
     @Override
     public String toString() {
-        return "Profesional{" +
-                "titulo='" + titulo + '\'' +
-                ", fechaIngreso=" + fechaIngreso +
-                ", nombre='" + nombre + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", run=" + run +
-                '}';
+        return "\n\nProfesional" +
+                "\ntitulo: " + titulo  +
+                "\nfecha de ingreso: " + fechaIngreso +
+                "\nNombre: " + nombre + 
+                "\nFecha de Nacimiento: " + fechaNacimiento +
+                "\nRun: " + run 
+                ;
     }
 }

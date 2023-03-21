@@ -1,21 +1,29 @@
 package sprint;
-
+/*
+ * @Author Mauricio Gutierrez
+ */
 import java.time.LocalDate;
 
 public abstract class Usuario implements Asesoria {
-    public Usuario(String nombre, LocalDate fechaNacimiento, int run) {
+	//atributos
+	String nombre;
+    LocalDate fechaNacimiento;
+    int run;
+    
+    //constructor con datos
+	public Usuario(String nombre, LocalDate fechaNacimiento, int run) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.run = run;
     }
 
+	
+	//constructor vacio
     public Usuario() {
     }
 
-    String nombre;
-    LocalDate fechaNacimiento;
-    int run;
 
+    //metodo mostrar edad
     public void mostrarEdad() {
         System.out.println("El usuario tiene " + (LocalDate.ofEpochDay(LocalDate.now().toEpochDay() - fechaNacimiento.toEpochDay()).getYear() - 1970) + " años");
     }
@@ -51,10 +59,10 @@ public abstract class Usuario implements Asesoria {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", run=" + run +
-                '}';
+        return "Usuario" +
+                "\nnombre: " + nombre + '\'' +
+                "\nfechaNacimiento: " + fechaNacimiento +
+                "\nrun: " + run +
+                '\n';
     }
 }

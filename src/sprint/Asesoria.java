@@ -1,5 +1,7 @@
 package sprint;
-
-interface Asesoria {
-    void analizarUsuario();
+/*
+ * @Author Mauricio Gutierrez, David Morales, Carlos Carrasco
+ */
+public interface Asesoria {
+    public void analizarUsuario();
 }

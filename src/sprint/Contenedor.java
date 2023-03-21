@@ -1,7 +1,10 @@
 package sprint;
 
 /*
- * @Author Mauricio Gutierrez, David Morales, Carlos Carrasco
+ * @author Mauricio Gutierrez
+ * @author David Morales
+ * @author Carlos Carrasco
+ * @version 5.0
  */
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +16,7 @@ public class Contenedor {
 	ArrayList<Usuario> instanciaAsesoria = new ArrayList<Usuario>();
 	ArrayList<Capacitacion> objetosCapacitacion = new ArrayList<Capacitacion>();
 
-	// 1
+	// 1 metodo para almacenar clientes
 	public void almacenarCliente() {
 		Scanner scan = new Scanner(System.in);
 
@@ -22,7 +25,7 @@ public class Contenedor {
 		// nombre
 		String nombre;
 		do {
-			System.out.println("NOMBRE: ");
+			System.out.println("NOMBRE (5 a 30 caracteres): ");
 			nombre = scan.nextLine();
 			if (nombre.length() < 5 || nombre.length() > 30) {
 				System.out.println("Error: El nombre debe tener entre 5 y 30 caracteres.");
@@ -39,7 +42,7 @@ public class Contenedor {
 				fechaNacimiento = LocalDate.parse(fecha, Format);
 				break;
 			} catch (DateTimeParseException e) {
-				System.out.println("Error: La fecha debe estar en formato DD/MM/AAAA.");
+				System.out.println("Error: La fecha debe estar en formato(DD/MM/AAAA).");
 			}
 		} while (true);
 
@@ -48,7 +51,7 @@ public class Contenedor {
 		boolean inputValido = false;
 		do {
 			try {
-				System.out.println("RUN: ");
+				System.out.println("RUN(sin guion, reemplaze K por un 0: ");
 				run = scan.nextInt();
 				inputValido = true;
 			} catch (Exception e) {
@@ -56,11 +59,11 @@ public class Contenedor {
 				scan.next();
 			}
 		} while (!inputValido || run <= 0 || run >= 99999999);
-
+		scan.nextLine();
 		// apellido
 		String apellido;
 		do {
-			System.out.println("APELLIDO: ");
+			System.out.println("APELLIDO(entre 5 y 30 caracteres): ");
 			apellido = scan.nextLine();
 			if (apellido.length() < 5 || apellido.length() > 30) {
 				System.out.println("Error: El apellido debe tener entre 5 y 30 caracteres.");
@@ -68,14 +71,22 @@ public class Contenedor {
 		} while (apellido.length() < 5 || apellido.length() > 30);
 
 		// telefono
-		System.out.println("TELEFONO: ");
-		int telefono = scan.nextInt();
+		int telefono;
+		do {
+			System.out.println("TELEFONO(solo ingrese numeros sin simbolos): ");
+			try {
+				telefono = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("telefono debe contener numeros enteros");
+				scan.nextLine();
+			}
+		} while (true);
 		scan.nextLine();
-
 		// afp
 		String afp;
 		do {
-			System.out.println("AFP: ");
+			System.out.println("AFP(4 a 30 caracteres): ");
 			afp = scan.nextLine();
 			if (afp.length() < 4 || afp.length() > 30) {
 				System.out.println("Error: el nombre de la afp debe tener entre 4 y 30 caracteres.");
@@ -96,7 +107,7 @@ public class Contenedor {
 		// direccion
 		String direccion;
 		do {
-			System.out.println("DIRECCION: ");
+			System.out.println("DIRECCION(70 caracteres maximo): ");
 			direccion = scan.nextLine();
 			if (direccion.length() > 70) {
 				System.out.println("Error: la direccion puede contener maximo 70 caracteres");
@@ -107,7 +118,7 @@ public class Contenedor {
 		// comuna
 		String comuna;
 		do {
-			System.out.println("COMUNA: ");
+			System.out.println("COMUNA(50 caracteres maximo): ");
 			comuna = scan.nextLine();
 		} while (comuna.length() > 50);
 
@@ -115,23 +126,29 @@ public class Contenedor {
 		int edad;
 		do {
 			System.out.println("EDAD: ");
-			edad = scan.nextInt();
-			scan.nextLine();
-		} while (edad < 0 || edad >= 150);
+			try {
+				edad = scan.nextInt();
+				break;
+			} catch (Exception e) {
+				System.out.println("la edad debe ser un numero entero");
+				scan.next();
+			}
+		} while (true);
 
 		Cliente cliente = new Cliente(nombre, fechaNacimiento, run, apellido, telefono, afp, sistemaSalud, direccion,
 				comuna, edad);
 		instanciaAsesoria.add(cliente);
 	}
 
-	// 2
+	// 2 metodo para almacenar profesionales
 	public void almacenarProfesional() {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("---------NUEVO PROFESIONAL---------");
+
 		String nombre;
 		do {
-			System.out.println("NOMBRE: ");
+			System.out.println("NOMBRE(5 a 30 caracteres): ");
 			nombre = scan.nextLine();
 			if (nombre.length() < 5 || nombre.length() > 30) {
 				System.out.println("Error: El nombre debe tener entre 5 y 30 caracteres.");
@@ -139,7 +156,7 @@ public class Contenedor {
 		} while (nombre.length() < 5 || nombre.length() > 30 || !nombre.matches("[a-z A-Z]+"));
 
 		// fecha nacimiento
-		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA): ");
+		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA) : ");
 		LocalDate fechaNacimiento;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		do {
@@ -157,7 +174,7 @@ public class Contenedor {
 		boolean inputValido = false;
 		do {
 			try {
-				System.out.println("RUN: ");
+				System.out.println("RUN(sin guion, reemplace K por un 0: ");
 				run = scan.nextInt();
 				inputValido = true;
 			} catch (Exception e) {
@@ -169,7 +186,7 @@ public class Contenedor {
 		// titulo
 		String titulo = scan.nextLine();
 		do {
-			System.out.println("TITULO: ");
+			System.out.println("TITULO(10 caracteres minimo, 50 maximo): ");
 			titulo = scan.nextLine();
 			if (titulo.length() < 10 || titulo.length() > 50) {
 				System.out.println("Error: titulo debe tener entre 10 y 50 caracteres.");
@@ -177,25 +194,25 @@ public class Contenedor {
 		} while (titulo.length() < 10 || titulo.length() > 50);
 
 		// fecha de ingreso
-		System.out.println("FECHA INGRESO (DD/MM/AAAA): ");
+		System.out.println("FECHA INGRESO (DD/MM/AAAA):  ");
 		String fechaIngreso = scan.nextLine();
 
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate fechaIngresoFormat = LocalDate.parse(fechaIngreso, format);
 
-		// creacion objeto prfesional
+		// creacion objeto profesional
 		Profesional profesional = new Profesional(nombre, fechaNacimiento, run, titulo, fechaIngresoFormat);
 		instanciaAsesoria.add(profesional);
 	}
 
-	// 3
+	// 3 metodo para almacenar administrativo
 	public void almacenarAdmin() {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("---------NUEVO ADMINISTRATIVO---------");
 		String nombre;
 		do {
-			System.out.println("NOMBRE: ");
+			System.out.println("NOMBRE(5 a 30 caracteres): ");
 			nombre = scan.nextLine();
 			if (nombre.length() < 5 || nombre.length() > 30) {
 				System.out.println("Error: El nombre debe tener entre 5 y 30 caracteres.");
@@ -212,7 +229,7 @@ public class Contenedor {
 				fechaNacimiento = LocalDate.parse(fecha, formatear);
 				break;
 			} catch (DateTimeParseException e) {
-				System.out.println("Error: La fecha debe estar en formato DD/MM/AAAA.");
+				System.out.println("Error: La fecha debe estar en formato (DD/MM/AAAA)");
 			}
 		} while (true);
 
@@ -221,19 +238,19 @@ public class Contenedor {
 		boolean inputValido = false;
 		do {
 			try {
-				System.out.println("RUN: ");
+				System.out.println("RUN(sin guion, reemplace K por un 0: ");
 				run = scan.nextInt();
 				inputValido = true;
 			} catch (Exception e) {
 				System.out.println("ingrese rut valido y sin punto ni guion");
-				scan.next();
+				scan.nextLine();
 			}
 		} while (!inputValido || run <= 0 || run >= 99999999);
 
 		// area
 		String area = scan.nextLine();
 		do {
-			System.out.println("AREA: ");
+			System.out.println("AREA(5 caracteres minimo, 20 maximo): ");
 			area = scan.nextLine();
 			if (area.length() < 5 || area.length() > 20) {
 				System.out.println("Error: area debe tener entre 5 y 20 caracteres.");
@@ -243,7 +260,7 @@ public class Contenedor {
 		// experiencia
 		String experiencia;
 		do {
-			System.out.println("EXPERIENCIA: ");
+			System.out.println("EXPERIENCIA(maximo 100 caracteres): ");
 			experiencia = scan.nextLine();
 			if (experiencia.length() > 100) {
 				System.out.println("Error: puede ingresar maximo 100 caracteres");
@@ -255,7 +272,7 @@ public class Contenedor {
 		instanciaAsesoria.add(administrativo);
 	}
 
-	// 4
+	// 4 metodo para almacenar capacitaciones
 	public void almacenarCapacitacion() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("---------INGRESE CAPACITACION---------");
@@ -276,24 +293,50 @@ public class Contenedor {
 		boolean inputValido = false;
 		do {
 			try {
-				System.out.println("RUN: ");
+				System.out.println("RUN(sin guion, reemplace K por un 0): ");
 				runCliente = scan.nextInt();
 				inputValido = true;
 			} catch (Exception e) {
 				System.out.println("ingrese rut valido y sin punto ni guion");
-				scan.next();
+
 			}
 		} while (!inputValido || runCliente <= 0 || runCliente >= 99999999);
 
-		String dia;
-		System.out.println("DIA (DD/MM/AAAA): ");
-		dia = scan.nextLine();
-		scan.nextLine();
+		// dia
+		System.out.println("FECHA NACIMIENTO (DD/MM/AAAA) : ");
+		LocalDate dia;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		do {
+			try {
+				scan.nextLine();
+				String fecha = scan.nextLine();
+				dia = LocalDate.parse(fecha, formatter);
+				break;
+			} catch (DateTimeParseException e) {
+				System.out.println("Error: La fecha debe estar en formato DD/MM/AAAA.");
+			}
+		} while (true);
 
+		// hora
 		String hora;
 		System.out.println("HORA (HH:MM): ");
-		hora = scan.nextLine();
+		do {
+			hora = scan.nextLine();
+			String[] partes = hora.split(":");
+			if (partes.length == 2) {
+				try {
+					int horas = Integer.parseInt(partes[0]);
+					int minutos = Integer.parseInt(partes[1]);
+					if (horas >= 0 && horas <= 23 && minutos >= 0 && minutos <= 59) {
+						break;
+					}
+				} catch (NumberFormatException e) {
+				}
+			}
+			System.out.println("Error: La hora debe estar en formato HH:MM (hora 00 y 23, minutos 00 y 59).");
+		} while (true);
 
+		// lugar
 		String lugar;
 		do {
 			System.out.println("LUGAR: ");
@@ -305,6 +348,7 @@ public class Contenedor {
 			}
 		} while (true);
 
+		// duracion
 		int duracion;
 		do {
 			System.out.println("DURACION (MINUTOS): ");
@@ -333,7 +377,7 @@ public class Contenedor {
 		objetosCapacitacion.add(cap);
 	}
 
-	// 5
+	// 5 para eliminar usuario mediante run
 	public void eliminarUsuario() {
 		Scanner scan = new Scanner(System.in);
 		int run = 0;
@@ -365,12 +409,12 @@ public class Contenedor {
 		}
 	}
 
-	// 6
+	// 6 lista todos los usuarios (cliente, administrativo, profesional)
 	public void listarUsuarios() {
 		System.out.println(instanciaAsesoria);
 	}
 
-	// 7
+	// 7 lista separando tipo de usuario (cliente, administrativo, profesional)
 	public void listarUsuariosTipo(ArrayList instanciaAsesoria) {
 		Scanner scan = new Scanner(System.in);
 		String input = "";
@@ -409,7 +453,7 @@ public class Contenedor {
 		}
 	}
 
-	// 8
+	// 8 muestra capacitaciones creadas en metodo 4 de almacenar capacitaciones
 	public void listarCapacitaciones() {
 		System.out.println(objetosCapacitacion);
 	}
